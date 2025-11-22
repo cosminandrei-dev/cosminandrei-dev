@@ -1,28 +1,38 @@
 name: Generate Neon Snake
 
 on:
+  # Run automatically every 12 hours
   schedule:
-    - cron: "0 */6 * * *" 
+    - cron: "0 */12 * * *" 
+  
+  # Allows to manually run the job at any time
   workflow_dispatch:
+  
+  # Run on every push on the master branch
+  push:
+    branches:
+    - master
+    - main
 
 jobs:
-  build:
+  generate:
+    permissions: 
+      contents: write
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
     steps:
-      - uses: actions/checkout@v2
-      
-      - uses: Platane/snk@v2
-        id: snake-gif
+      - name: generate github-contribution-grid-snake.svg
+        uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            # This palette creates the Cyberpunk look:
-            # Black bg -> Purple -> Pink -> Cyan -> Bright Cyan
             dist/github-contribution-grid-snake.svg?palette=github-dark&color_snake=00ffff&color_dots=#0d1117,#4b0082,#ff00ff,#00e5ff,#00ffff
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: crazy-max/ghaction-github-pages@v2.1.3
+          
+      - name: push github-contribution-grid-snake.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
