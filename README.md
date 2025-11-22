@@ -52,7 +52,8 @@
 
 <!-- SNAKE: Needs custom palette (See instructions below) -->
 <div align="center">
-  <img src="https://github.com/cosminandrei-dev/cosminandrei-dev/blob/output/github-contribution-grid-snake.svg" alt="snake" />
+  <!-- The ?v=3 at the end forces the browser to reload the image -->
+  <img src="https://raw.githubusercontent.com/cosminandrei-dev/cosminandrei-dev/output/github-contribution-grid-snake.svg?v=3" alt="snake" />
 </div>
 
 <div align="center">
