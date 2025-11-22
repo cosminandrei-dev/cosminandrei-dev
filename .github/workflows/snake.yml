@@ -28,7 +28,7 @@ jobs:
             # 3. #ff00ff (Magenta)   -> Medium activity
             # 4. #00ffff (Cyan)      -> High activity
             # 5. #ffffff (White)     -> Peak activity (Blindingly bright)
-            dist/github-contribution-grid-snake.svg?color_snake=00ffff&color_dots=#21262d,#8a2be2,#ff00ff,#00ffff,#ffffff
+            dist/github-contribution-grid-snake.svg?color_snake=FFFF00&color_dots=#30363d,#7000ff,#ff00ff,#00ffff,#ffffff
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
